@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DemoTestController;
+use App\Http\Controllers\ActivateRecordController;
+use App\Http\Controllers\DeactivateRecordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/demo/test', [DemoTestController::class, 'store']);
+Route::post('/records/activate', [ActivateRecordController::class, 'activate']);
+Route::post('/records/deactivate', [DeactivateRecordController::class, 'deactivate']);
