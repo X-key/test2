@@ -8,7 +8,10 @@ use Illuminate\Validation\ValidationException;
 
 class DeactivateRecordController extends Controller
 {
-    public function deactivate(Request $request)
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deactivate(Request $request): \Illuminate\Http\JsonResponse
     {
         $refs = $request->input('refs');
 
@@ -17,19 +20,18 @@ class DeactivateRecordController extends Controller
             'refs.*' => 'required|string',
         ]);
 
-        $activeObjects = DemoTest::whereIn('ref', $refs)
-            ->where('is_active', true)
-            ->get();
-
-        if ($activeObjects->isNotEmpty()) {
-            $activeRefs = $activeObjects->pluck('ref')->implode(', ');
-            throw ValidationException::withMessages([
-                'refs' => "The following records are already active: $activeRefs",
-            ]);
-        }
-
         DemoTest::whereIn('ref', $refs)
             ->update(['is_active' => false]);
+
+        $updatedCount = DemoTest::whereIn('ref', $refs)
+            ->where('is_active', false)
+            ->count();
+
+        if (count($refs) !== $updatedCount) {
+            throw ValidationException::withMessages([
+                'refs' => "Some records could not be deactivated or were already inactive",
+            ]);
+        }
 
         return response()->json(['message' => 'Records deactivated successfully']);
     }

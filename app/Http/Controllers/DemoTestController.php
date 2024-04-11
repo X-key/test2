@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DemoTestRequest;
-use App\Jobs\DispatcherJob;
 use App\Jobs\ProcessDemoTest;
 use App\Models\DemoTestInquiry;
 
 class DemoTestController extends Controller
 {
-    public function store(DemoTestRequest $request)
+    public function store(DemoTestRequest $request): \Illuminate\Http\JsonResponse
     {
         $validatedRequest = $request->validated();
 
