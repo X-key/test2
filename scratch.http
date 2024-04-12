@@ -1,0 +1,64 @@
+
+### Send POST request with json body
+POST http://localhost:8000/api/demo/test
+Content-Type: application/json
+
+{
+  "objects": [
+    {
+      "ref": "T-1",
+      "name": "test",
+      "description": null
+    },
+    {
+      "ref": "T-2",
+      "name": "test",
+      "description": "Test description"
+    }
+  ]
+}
+
+<> 2024-04-12T195110.200.json
+<> 2024-04-12T193527.200.json
+
+
+### Send POST2 request with json body
+POST http://localhost:8000/api/records/activate
+Content-Type: application/json
+
+{
+  "refs": [
+    "T-1",
+    "T-2"
+  ]
+}
+
+### Send POST3 request with json body
+POST http://localhost:8000/api/records/deactivate
+Content-Type: application/json
+
+{
+  "refs": [
+    "T-1",
+    "T-2"
+  ]
+}
+
+<> 2024-04-12T195101.200.json
+<> 2024-04-12T195038.200.json
+<> 2024-04-12T194913.200.json
+<> 2024-04-12T194847.200.json
+<> 2024-04-12T193807.200.json
+<> 2024-04-12T193757.500.html
+<> 2024-04-12T193712.500.html
+<> 2024-04-12T193658.200.json
+<> 2024-04-12T193636.200.json
+<> 2024-04-12T193621.200.json
+<> 2024-04-12T193531.500.html
+<> 2024-04-12T193517.500.html
+<> 2024-04-12T193432.500.html
+<> 2024-04-12T193411.200.json
+<> 2024-04-12T193335.200.json
+<> 2024-04-12T193215.200.json
+<> 2024-04-12T193025.200.json
+<> 2024-04-12T192955.200.json
