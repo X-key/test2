@@ -5,8 +5,23 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 
-class DemoTestRequest extends FormRequest
+/**
+ * Class DemoTestRequest
+ * @package App\Http\Requests
+ */
+final class DemoTestRequest extends FormRequest
 {
+    /**
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return array
+     */
     public function rules(): array
     {
         return [
