@@ -46,11 +46,11 @@ final class DemoTest extends Model
         $messagePrefix = $isActive ? 'activated' : 'deactivated';
 
         return [
-            "${$messagePrefix}_refs_count" => count($notActivatedRefs),
-            "${$messagePrefix}_refs_list" => $notActivatedRefs,
+            $messagePrefix.'_refs_count' => count($notActivatedRefs),
+            $messagePrefix.'_refs_list' => $notActivatedRefs,
             'not_found_refs_count' => count($notFoundRefs),
             'not_found_refs_list' => $notFoundRefs,
-            "already_${$messagePrefix}_refs_count" => ($existingRefs ? count($existingRefs) - count($notActivatedRefs) : 0),
+            'already_' . $messagePrefix . '_refs_count' => ($existingRefs ? count($existingRefs) - count($notActivatedRefs) : 0),
         ];
     }
 }
